@@ -1,5 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 import { Layout } from "../components/Layout"
+import { Home } from "../pages/Home"
+import { PokemonDetail } from "../pages/PokemonDetail"
 
 export const Router = () => {
     return (
