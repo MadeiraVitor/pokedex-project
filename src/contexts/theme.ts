@@ -1,5 +1,5 @@
 import IconSun from "../assets/images/icon-sun.svg";
-import IconMoon from "../assets/images/icon-moon.svg";
+import IconMoon from "../assets/images/icon-moon.png";
 
 export const themeConfig = {
   light: {

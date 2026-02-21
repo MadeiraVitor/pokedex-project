@@ -5,7 +5,9 @@ type PokemonListItem = {
   name: string;
   url: string;
   image: string;
+  types?: Array<{ type: { name: string } }>;
 };
+
 
 export const Home = () => {
   const [pokemons, setPokemons] = useState<PokemonListItem[]>([]);
@@ -27,6 +29,7 @@ export const Home = () => {
           name: pokemon.name,
           url: pokemon.url,
           image: detailData.sprites.front_default,
+          types: detailData.types,
         };
       },
     );
@@ -45,6 +48,7 @@ export const Home = () => {
 
   useEffect(() => {
     fetchPokemons();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offset]);
 
   const handleLoadMore = () => {
@@ -52,31 +56,43 @@ export const Home = () => {
   };
 
   return (
-    <div className="p-4">
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-        {pokemons.map((pokemon) => (
-          <Link
-            to={`/pokemon/${pokemon.name}`}
-            key={pokemon.name}
-            className="bg-white dark:bg-gray-800 rounded shadow p-2 flex flex-col items-center hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+    <div className="min-h-screen bg-[#231010] text-white px-4 py-8">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-4xl font-bold mb-2">Explorar</h2>
+        <p className="text-lg text-gray-300 mb-8">
+          Descubra e aprenda sobre todos os Pokémon.
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8">
+          {pokemons.map((pokemon) => (
+            <Link
+              to={`/pokemon/${pokemon.name}`}
+              key={pokemon.name}
+              className="bg-[#2c1818] rounded-2xl shadow-lg p-4 flex flex-col items-center border border-red-900/20 hover:border-red-500 transition group"
+            >
+              <div className="w-36 h-36 rounded-xl flex items-center justify-center mb-4">
+                <img
+                  src={pokemon.image}
+                  alt={pokemon.name}
+                  className="w-32 h-32 object-contain drop-shadow-lg"
+                />
+              </div>
+              <span className="capitalize font-bold text-xl mb-2 group-hover:text-red-400 transition">
+                {pokemon.name}
+              </span>
+            </Link>
+          ))}
+        </div>
+
+        <div className="flex justify-center mt-10">
+          <button
+            className="px-8 py-3 rounded-full bg-red-600 text-white text-lg font-semibold shadow-lg hover:bg-red-700 transition disabled:bg-gray-400 disabled:text-gray-200"
+            onClick={handleLoadMore}
+            disabled={loading}
           >
-            <img
-              src={pokemon.image}
-              alt={pokemon.name}
-              className="w-20 h-20 mb-2"
-            />
-            <span className="capitalize font-medium">{pokemon.name}</span>
-          </Link>
-        ))}
-      </div>
-      <div className="flex justify-center mt-6">
-        <button
-          className="px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600 disabled:bg-gray-400 cursor-pointer"
-          onClick={handleLoadMore}
-          disabled={loading}
-        >
-          {loading ? "Carregando..." : "Carregar mais"}
-        </button>
+            {loading ? "Carregando..." : "Carregar Mais"}
+          </button>
+        </div>
       </div>
     </div>
   );
