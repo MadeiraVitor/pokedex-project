@@ -8,7 +8,7 @@ export const Header = () => {
   return (
     <header
       className={`flex items-center justify-between px-8 py-4 transition-colors duration-300 border-b border-red-900/20
-        ${theme === "dark" ? "bg-[#231010] text-white" : "bg-gray-300 text-gray-900"}`}
+        ${theme === "dark" ? "bg-[#231010] text-white" : "bg-white text-gray-900"}`}
     >
       <div className="flex items-center gap-4">
         <img
@@ -21,7 +21,7 @@ export const Header = () => {
       </div>
 
       <button
-        className="cursor-pointer bg-transparent border border-red-900/30 outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-400 rounded-full p-2 transition-all duration-200 hover:bg-red-900/10"
+        className="cursor-pointer p-2"
         onClick={toggleTheme}
         aria-label="Alternar tema"
       >

@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 type PokemonListItem = {
   name: string;
   url: string;
   image: string;
-  types?: Array<{ type: { name: string } }>;
 };
-
 
 export const Home = () => {
   const [pokemons, setPokemons] = useState<PokemonListItem[]>([]);
   const [offset, setOffset] = useState(0);
   const [loading, setLoading] = useState(false);
+  const { theme } = useContext(ThemeContext);
 
   const fetchPokemons = async () => {
     setLoading(true);
@@ -48,7 +48,6 @@ export const Home = () => {
 
   useEffect(() => {
     fetchPokemons();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offset]);
 
   const handleLoadMore = () => {
@@ -56,11 +55,20 @@ export const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#231010] text-white px-4 py-8">
+    <div
+      className={`min-h-screen px-4 py-8 transition-colors duration-300
+        ${theme === "dark" ? "bg-[#231010] text-white" : "bg-white text-gray-900"}`}
+    >
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold mb-2">Explorar</h2>
-        <p className="text-lg text-gray-300 mb-8">
-          Descubra e aprenda sobre todos os Pokémon.
+        <h2
+          className={`text-4xl font-bold mb-2 ${theme === "dark" ? "text-white" : "text-gray-900"}`}
+        >
+          Explorar
+        </h2>
+        <p
+          className={`text-lg mb-8 ${theme === "dark" ? "text-gray-300" : "text-gray-500"}`}
+        >
+          Descubra e aprenda sobre todos os Pokémons.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8">
@@ -68,7 +76,13 @@ export const Home = () => {
             <Link
               to={`/pokemon/${pokemon.name}`}
               key={pokemon.name}
-              className="bg-[#2c1818] rounded-2xl shadow-lg p-4 flex flex-col items-center border border-red-900/20 hover:border-red-500 transition group"
+              className={`rounded-2xl shadow-lg p-4 flex flex-col items-center border transition group
+                ${
+                  theme === "dark"
+                    ? "bg-[#2c1818] border-red-900/20 hover:border-red-500"
+                    : "bg-white border-gray-200 hover:border-red-400"
+                }
+              `}
             >
               <div className="w-36 h-36 rounded-xl flex items-center justify-center mb-4">
                 <img
@@ -77,7 +91,9 @@ export const Home = () => {
                   className="w-32 h-32 object-contain drop-shadow-lg"
                 />
               </div>
-              <span className="capitalize font-bold text-xl mb-2 group-hover:text-red-400 transition">
+              <span
+                className={`capitalize font-bold text-xl mb-2 group-hover:text-red-400 transition ${theme === "dark" ? "text-white" : "text-gray-900"}`}
+              >
                 {pokemon.name}
               </span>
             </Link>
@@ -86,7 +102,7 @@ export const Home = () => {
 
         <div className="flex justify-center mt-10">
           <button
-            className="px-8 py-3 rounded-full bg-red-600 text-white text-lg font-semibold shadow-lg hover:bg-red-700 transition disabled:bg-gray-400 disabled:text-gray-200"
+            className="px-8 py-3 rounded-full bg-red-600 text-white text-lg font-semibold shadow-lg hover:bg-red-700 transition disabled:bg-gray-400 disabled:text-gray-200 cursor-pointer"
             onClick={handleLoadMore}
             disabled={loading}
           >
