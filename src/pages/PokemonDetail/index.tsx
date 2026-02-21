@@ -44,6 +44,12 @@ export const PokemonDetail = () => {
 
   return (
     <div className="p-4">
+      <button
+        className="mb-4 px-4 py-2 rounded bg-gray-300 dark:bg-gray-700 text-black dark:text-white hover:bg-gray-400 dark:hover:bg-gray-600 transition cursor-pointer"
+        onClick={() => window.history.back()}
+      >
+        ← Voltar para Home
+      </button>
       <h2 className="text-2xl font-bold capitalize mb-4">{pokemon.name}</h2>
       <img
         src={pokemon.sprites.front_default}
