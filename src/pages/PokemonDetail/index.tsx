@@ -59,14 +59,16 @@ export const PokemonDetail = () => {
 
   if (loading || !pokemon)
     return (
-      <div className={`p-8 text-center text-lg font-semibold ${theme === "dark" ? "text-gray-400" : "text-gray-500"}`}>
+      <div
+        className={`h-full p-8 text-center text-lg font-semibold ${theme === "dark" ? "bg-[#231010] text-white" : "bg-white text-gray-900"}`}
+      >
         Carregando...
       </div>
     );
 
   return (
     <div
-      className={`min-h-screen px-4 py-10 transition-colors duration-300 ${theme === "dark" ? "bg-[#231010] text-white" : "bg-white text-gray-900"}`}
+      className={`h-full px-4 py-10 transition-colors duration-300 ${theme === "dark" ? "bg-[#231010] text-white" : "bg-white text-gray-900"}`}
     >
       <div className="max-w-6xl mx-auto">
         <button
@@ -80,7 +82,8 @@ export const PokemonDetail = () => {
         <div className="flex flex-col md:flex-row gap-12 items-center md:items-start md:justify-center">
           {/* Imagem */}
           <div className="flex flex-col items-center">
-            <div className={`w-80 h-80 rounded-3xl flex items-center justify-center shadow-lg mb-6
+            <div
+              className={`w-80 h-80 rounded-3xl flex items-center justify-center shadow-lg mb-6
               ${theme === "dark" ? "bg-[#2c1818]" : "bg-gray-100"}`}
             >
               <img
@@ -97,34 +100,43 @@ export const PokemonDetail = () => {
           {/* Detalhes */}
           <div className="flex-1 flex flex-col gap-8 w-full">
             <div>
-              <h2 className={`text-5xl font-extrabold capitalize mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>{pokemon.name}</h2>
+              <h2
+                className={`text-5xl font-extrabold capitalize mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"}`}
+              >
+                {pokemon.name}
+              </h2>
               <div className="flex gap-3 mb-6 flex-wrap">
-                {pokemon.types.map((t: any) => (
+                {pokemon.types.map((type: any) => (
                   <span
-                    key={t.type.name}
-                    className={`capitalize px-5 py-2 rounded-full font-semibold text-base shadow-sm ${typeColors[t.type.name] || (theme === "dark" ? "bg-gray-700 text-white" : "bg-gray-200 text-gray-900")}`}
+                    key={type.type.name}
+                    className={`capitalize px-5 py-2 rounded-full font-semibold text-base shadow-sm ${typeColors[type.type.name]}`}
                   >
-                    {t.type.name}
+                    {type.type.name}
                   </span>
                 ))}
               </div>
             </div>
 
             {/* Habilidades */}
-            <div className={`rounded-2xl p-6 shadow-lg mb-4 ${theme === "dark" ? "bg-[#2c1818]" : "bg-gray-100"}`}>
+            <div
+              className={`rounded-2xl p-6 shadow-lg mb-4 ${theme === "dark" ? "bg-[#2c1818]" : "bg-gray-100"}`}
+            >
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-2xl">⚡</span>
                 <span className="text-xl font-bold">Habilidades</span>
               </div>
               <ul className="flex flex-col gap-4">
                 {abilities.map((abilitie) => (
-                  <li key={abilitie.name} className={`${theme === "dark" ? "bg-[#231010]" : "bg-white"} rounded-lg px-4 py-2`}>
-                    <span
-                      className="uppercase font-bold text-red-400"
-                    >
+                  <li
+                    key={abilitie.name}
+                    className={`${theme === "dark" ? "bg-[#231010]" : "bg-white"} rounded-lg px-4 py-2`}
+                  >
+                    <span className="uppercase font-bold text-red-400">
                       {abilitie.name}
                     </span>
-                    <div className={`text-base mt-1 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
+                    <div
+                      className={`text-base mt-1 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}
+                    >
                       {abilitie.description}
                     </div>
                   </li>
@@ -133,7 +145,9 @@ export const PokemonDetail = () => {
             </div>
 
             {/* Movimentos */}
-            <div className={`rounded-2xl p-6 shadow-lg ${theme === "dark" ? "bg-[#2c1818]" : "bg-gray-100"}`}>
+            <div
+              className={`rounded-2xl p-6 shadow-lg ${theme === "dark" ? "bg-[#2c1818]" : "bg-gray-100"}`}
+            >
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-2xl">⚔️</span>
                 <span className="text-xl font-bold">Lista de Movimentos</span>
