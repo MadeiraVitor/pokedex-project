@@ -56,7 +56,7 @@ export const Home = () => {
 
   return (
     <div
-      className={`min-h-screen px-4 py-8 transition-colors duration-300
+      className={`h-full px-4 py-8 transition-colors duration-300
         ${theme === "dark" ? "bg-[#231010] text-white" : "bg-white text-gray-900"}`}
     >
       <div className="max-w-6xl mx-auto">
@@ -71,7 +71,7 @@ export const Home = () => {
           Descubra e aprenda sobre todos os Pokémons.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6">
           {pokemons.map((pokemon) => (
             <Link
               to={`/pokemon/${pokemon.name}`}
@@ -84,7 +84,7 @@ export const Home = () => {
                 }
               `}
             >
-              <div className="w-36 h-36 rounded-xl flex items-center justify-center mb-4">
+              <div className="w-35 h-35 rounded-xl flex items-center justify-center mb-4">
                 <img
                   src={pokemon.image}
                   alt={pokemon.name}
