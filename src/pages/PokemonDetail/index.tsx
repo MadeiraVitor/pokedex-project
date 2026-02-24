@@ -19,6 +19,13 @@ const typeColors: Record<string, string> = {
   dragon: "bg-blue-900 text-white",
   flying: "bg-blue-400 text-gray-900",
   normal: "bg-gray-400 text-gray-900",
+  bug: "bg-green-600 text-white",
+  rock: "bg-gray-700 text-white",
+  ground: "bg-yellow-700 text-white",
+  ice: "bg-blue-300 text-gray-900",
+  fighting: "bg-red-700 text-white",
+  steel: "bg-gray-500 text-gray-900",
+  dark: "bg-gray-800 text-white",
 };
 
 export const PokemonDetail = () => {
