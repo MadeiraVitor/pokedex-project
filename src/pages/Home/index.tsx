@@ -37,9 +37,9 @@ export const Home = () => {
     const pokemonsWithImages = await Promise.all(promises);
 
     setPokemons((prev) => {
-      const existingNames = new Set(prev.map((p) => p.name));
+      const existingNames = new Set(prev.map((pokemon) => pokemon.name));
       const newPokemons = pokemonsWithImages.filter(
-        (p) => !existingNames.has(p.name),
+        (pokemon) => !existingNames.has(pokemon.name),
       );
       return [...prev, ...newPokemons];
     });

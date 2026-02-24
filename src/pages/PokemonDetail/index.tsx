@@ -80,7 +80,6 @@ export const PokemonDetail = () => {
         </button>
 
         <div className="flex flex-col md:flex-row gap-12 items-center md:items-start md:justify-center">
-          {/* Imagem */}
           <div className="flex flex-col items-center">
             <div
               className={`w-80 h-80 rounded-3xl flex items-center justify-center shadow-lg mb-6
@@ -97,7 +96,6 @@ export const PokemonDetail = () => {
             </div>
           </div>
 
-          {/* Detalhes */}
           <div className="flex-1 flex flex-col gap-8 w-full">
             <div>
               <h2
@@ -117,7 +115,6 @@ export const PokemonDetail = () => {
               </div>
             </div>
 
-            {/* Habilidades */}
             <div
               className={`rounded-2xl p-6 shadow-lg mb-4 ${theme === "dark" ? "bg-[#2c1818]" : "bg-gray-100"}`}
             >
@@ -144,7 +141,6 @@ export const PokemonDetail = () => {
               </ul>
             </div>
 
-            {/* Movimentos */}
             <div
               className={`rounded-2xl p-6 shadow-lg ${theme === "dark" ? "bg-[#2c1818]" : "bg-gray-100"}`}
             >
