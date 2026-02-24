@@ -12,7 +12,7 @@ export const Header = () => {
     >
       <div className="flex items-center gap-4">
         <img
-          src="./src/assets/images/pokedex-icon.png"
+          src="../../assets/images/pokedex-icon.png"
           alt="Pokedex ícone"
           className="w-12 h-12"
         />
